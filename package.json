@@ -1,0 +1,21 @@
+{
+  "name": "tumblr-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -q server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^1.1.7",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "graphql-tools": "^2.5.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.1"
+  }
+}
