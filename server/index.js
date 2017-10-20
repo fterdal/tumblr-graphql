@@ -11,6 +11,13 @@ module.exports = app;
 
 const createApp = () => {
 
+  // Connects to Tumblr API
+  try {
+    require('../secrets');
+  } catch(err) {
+    console.error(`Please include a secrets.js file at the top level of the project directory with the Tumblr consumer key and secret`);
+  }
+
   // logging middleware
   app.use(morgan('dev'));
 
