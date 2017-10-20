@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 
+const schema = require('./graphql/schema');
 const PORT = process.env.PORT || 8080;
 const app = express();
 module.exports = app;
