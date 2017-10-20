@@ -10,6 +10,7 @@ const app = express();
 module.exports = app;
 
 const createApp = () => {
+
   // logging middleware
   app.use(morgan('dev'));
 
@@ -17,17 +18,12 @@ const createApp = () => {
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  // ~~~~~~~ Our very own GraphQL API ~~~~~~~
+  // GraphQL API
   app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
   app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')));
-
-  // sends index.html
-  // app.use('*', (req, res) => {
-  //   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  // })
 
   // error handling endware
   app.use((err, req, res, next) => {
@@ -38,7 +34,7 @@ const createApp = () => {
 }
 
 const startListening = () => {
-  const server = app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
+  app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`));
 }
 
 if (require.main === module) {
