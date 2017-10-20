@@ -2,7 +2,9 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 
+const schema = require('./graphql/schema');
 const PORT = process.env.PORT || 8080;
 const app = express();
 module.exports = app;
@@ -16,8 +18,8 @@ const createApp = () => {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   // ~~~~~~~ Our very own GraphQL API ~~~~~~~
-  // app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-  // app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+  app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+  app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')));
