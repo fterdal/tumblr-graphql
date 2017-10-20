@@ -1,7 +1,15 @@
-type User {
-  id: Int!
-  email: String!
+# A tumblr blog
+type Blog {
+  title: String! # Title of the blog
+  posts: Int! # Number of posts on this blog
+  name: String #
+  updated: Int
+  description: String
+  ask: Boolean!
+  ask_anon: Boolean!
+  likes: Int!
+  url: String
 }
 type Query {
-  userById(id: Int!): User
+  blogByIdentifier(id: String!): Blog
 }
